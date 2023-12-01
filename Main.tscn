@@ -1,17 +1,56 @@
-[gd_scene load_steps=3 format=3 uid="uid://ci6ywe8vjgfu7"]
+[gd_scene load_steps=5 format=3 uid="uid://ci6ywe8vjgfu7"]
 
 [ext_resource type="Material" uid="uid://b5b1uaejy4nvl" path="res://Assets/Materials/cloth_mat.tres" id="1_jy3pp"]
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_hhwki"]
+[sub_resource type="PlaneMesh" id="PlaneMesh_4up85"]
 material = ExtResource("1_jy3pp")
+subdivide_width = 15
+subdivide_depth = 15
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fnd37"]
+radius = 0.52
+
+[sub_resource type="SphereMesh" id="SphereMesh_xf3gr"]
 
 [node name="Node3D" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-mesh = SubResource("PlaneMesh_hhwki")
-
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.273203, -0.369102, 0.888326, 5.78204e-09, 0.923458, 0.3837, -0.961956, 0.104828, -0.252292, -4.89248, 0, 0)
+transform = Transform3D(0.487022, -0.335119, 0.806539, 1.39241e-08, 0.923458, 0.3837, -0.87339, -0.18687, 0.449744, -4.89248, 0, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.67514, 0.73769, 0, -0.73769, 0.67514, 0, 1.06923, 1.37088)
+transform = Transform3D(1, 0, 0, 0, 0.67514, 0.73769, 0, -0.73769, 0.67514, 0, 2.14259, 1.80061)
+
+[node name="SoftBody3D" type="SoftBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.771477, 0)
+mesh = SubResource("PlaneMesh_4up85")
+simulation_precision = 10
+linear_stiffness = 0.05
+damping_coefficient = 0.03
+pinned_points = [286, 285, 284, 274, 275, 276]
+attachments/0/point_index = 286
+attachments/0/spatial_attachment_path = NodePath("")
+attachments/0/offset = Vector3(0, 0, 0)
+attachments/1/point_index = 285
+attachments/1/spatial_attachment_path = NodePath("")
+attachments/1/offset = Vector3(0, 0, 0)
+attachments/2/point_index = 284
+attachments/2/spatial_attachment_path = NodePath("")
+attachments/2/offset = Vector3(0, 0, 0)
+attachments/3/point_index = 274
+attachments/3/spatial_attachment_path = NodePath("")
+attachments/3/offset = Vector3(0, 0, 0)
+attachments/4/point_index = 275
+attachments/4/spatial_attachment_path = NodePath("")
+attachments/4/offset = Vector3(0, 0, 0)
+attachments/5/point_index = 276
+attachments/5/spatial_attachment_path = NodePath("")
+attachments/5/offset = Vector3(0, 0, 0)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136627, 0.122171)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
+shape = SubResource("SphereShape3D_fnd37")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+mesh = SubResource("SphereMesh_xf3gr")
