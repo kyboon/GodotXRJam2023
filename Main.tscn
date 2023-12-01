@@ -1,16 +1,27 @@
-[gd_scene load_steps=5 format=3 uid="uid://ci6ywe8vjgfu7"]
+[gd_scene load_steps=9 format=3 uid="uid://ci6ywe8vjgfu7"]
 
 [ext_resource type="Material" uid="uid://b5b1uaejy4nvl" path="res://Assets/Materials/cloth_mat.tres" id="1_jy3pp"]
+[ext_resource type="Script" path="res://Test.gd" id="2_fj6si"]
+[ext_resource type="Script" path="res://RayCast3D.gd" id="3_bfqjb"]
+[ext_resource type="Script" path="res://Point2UVConverter.gd" id="4_5xkq2"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4up85"]
 material = ExtResource("1_jy3pp")
 subdivide_width = 15
 subdivide_depth = 15
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_fnd37"]
-radius = 0.52
+[sub_resource type="SphereShape3D" id="SphereShape3D_nvux5"]
+radius = 0.25
 
-[sub_resource type="SphereMesh" id="SphereMesh_xf3gr"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rdgkr"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 1, 1, 0.254902)
+
+[sub_resource type="SphereMesh" id="SphereMesh_i6ge7"]
+material = SubResource("StandardMaterial3D_rdgkr")
+radius = 0.25
+height = 0.5
 
 [node name="Node3D" type="Node3D"]
 
@@ -21,12 +32,13 @@ transform = Transform3D(0.487022, -0.335119, 0.806539, 1.39241e-08, 0.923458, 0.
 transform = Transform3D(1, 0, 0, 0, 0.67514, 0.73769, 0, -0.73769, 0.67514, 0, 2.14259, 1.80061)
 
 [node name="SoftBody3D" type="SoftBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0.771477, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
 mesh = SubResource("PlaneMesh_4up85")
-simulation_precision = 10
-linear_stiffness = 0.05
+simulation_precision = 50
+linear_stiffness = 0.03
 damping_coefficient = 0.03
-pinned_points = [286, 285, 284, 274, 275, 276]
+drag_coefficient = 0.03
+pinned_points = [286, 285, 284, 274, 275, 276, 279, 280, 281]
 attachments/0/point_index = 286
 attachments/0/spatial_attachment_path = NodePath("")
 attachments/0/offset = Vector3(0, 0, 0)
@@ -45,12 +57,34 @@ attachments/4/offset = Vector3(0, 0, 0)
 attachments/5/point_index = 276
 attachments/5/spatial_attachment_path = NodePath("")
 attachments/5/offset = Vector3(0, 0, 0)
+attachments/6/point_index = 279
+attachments/6/spatial_attachment_path = NodePath("")
+attachments/6/offset = Vector3(0, 0, 0)
+attachments/7/point_index = 280
+attachments/7/spatial_attachment_path = NodePath("")
+attachments/7/offset = Vector3(0, 0, 0)
+attachments/8/point_index = 281
+attachments/8/spatial_attachment_path = NodePath("")
+attachments/8/offset = Vector3(0, 0, 0)
 
-[node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.136627, 0.122171)
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.553056, 0.749371)
+freeze = true
+freeze_mode = 1
+script = ExtResource("2_fj6si")
+move_speed = 0.5
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-shape = SubResource("SphereShape3D_fnd37")
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_nvux5")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
-mesh = SubResource("SphereMesh_xf3gr")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_i6ge7")
+
+[node name="RayCast3D" type="RayCast3D" parent="RigidBody3D" node_paths=PackedStringArray("converter")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("3_bfqjb")
+converter = NodePath("../../Point2UVConverter")
+
+[node name="Point2UVConverter" type="Node" parent="." node_paths=PackedStringArray("mesh_input")]
+script = ExtResource("4_5xkq2")
+mesh_input = NodePath("../SoftBody3D")
