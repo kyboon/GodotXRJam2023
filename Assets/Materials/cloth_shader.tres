@@ -1,0 +1,118 @@
+[gd_resource type="VisualShader" load_steps=11 format=3 uid="uid://buwpmsvxcc5vi"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_sfi8b"]
+output_port_for_preview = 0
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_lfqmg"]
+parameter_name = "wrinkle_normal_secondary"
+texture_type = 2
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_jurra"]
+output_port_for_preview = 0
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(1, 1, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_hotca"]
+parameter_name = "normal_blend_weight"
+hint = 1
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_4rqgn"]
+parameter_name = "main_color"
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_6ar1o"]
+output_port_for_preview = 0
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_wav6u"]
+output_port_for_preview = 0
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_3n68r"]
+parameter_name = "wrinkle_normal_main"
+texture_type = 2
+
+[sub_resource type="VisualShaderNodeMix" id="VisualShaderNodeMix_ckrun"]
+output_port_for_preview = 0
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(0.5, 0.5, 1), 2, Vector3(0.5, 0.5, 0.5)]
+op_type = 3
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_4sp10"]
+parameter_name = "FloatParameterTemp"
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_schlick_ggx;
+
+uniform sampler2D main_color : source_color;
+uniform sampler2D wrinkle_normal_main : hint_normal;
+uniform sampler2D wrinkle_normal_secondary : hint_normal;
+uniform float normal_blend_weight : hint_range(0, 1);
+uniform float FloatParameterTemp;
+
+
+
+void fragment() {
+	vec4 n_out15p0;
+// Texture2D:15
+	n_out15p0 = texture(main_color, UV);
+
+
+	vec4 n_out4p0;
+// Texture2D:4
+	n_out4p0 = texture(wrinkle_normal_main, UV);
+
+
+	vec4 n_out10p0;
+// Texture2D:10
+	n_out10p0 = texture(wrinkle_normal_secondary, UV);
+
+
+// FloatParameter:13
+	float n_out13p0 = normal_blend_weight;
+
+
+// Mix:12
+	vec3 n_out12p0 = mix(vec3(n_out4p0.xyz), vec3(n_out10p0.xyz), vec3(n_out13p0));
+
+
+// FloatParameter:8
+	float n_out8p0 = FloatParameterTemp;
+
+
+// Mix:6
+	vec3 n_in6p1 = vec3(0.50000, 0.50000, 1.00000);
+	vec3 n_out6p0 = mix(n_out12p0, n_in6p1, vec3(n_out8p0));
+
+
+// Output:0
+	ALBEDO = vec3(n_out15p0.xyz);
+	NORMAL_MAP = n_out6p0;
+
+
+}
+"
+graph_offset = Vector2(-1684.2, 355.899)
+modes/cull = 2
+nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_wav6u")
+nodes/fragment/4/position = Vector2(-600, 640)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture2DParameter_3n68r")
+nodes/fragment/5/position = Vector2(-920, 640)
+nodes/fragment/6/node = SubResource("VisualShaderNodeMix_ckrun")
+nodes/fragment/6/position = Vector2(0, 640)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatParameter_4sp10")
+nodes/fragment/8/position = Vector2(-320, 440)
+nodes/fragment/10/node = SubResource("VisualShaderNodeTexture_sfi8b")
+nodes/fragment/10/position = Vector2(-600, 960)
+nodes/fragment/11/node = SubResource("VisualShaderNodeTexture2DParameter_lfqmg")
+nodes/fragment/11/position = Vector2(-920, 960)
+nodes/fragment/12/node = SubResource("VisualShaderNodeMix_jurra")
+nodes/fragment/12/position = Vector2(-300, 760)
+nodes/fragment/13/node = SubResource("VisualShaderNodeFloatParameter_hotca")
+nodes/fragment/13/position = Vector2(-340, 1100)
+nodes/fragment/14/node = SubResource("VisualShaderNodeTexture2DParameter_4rqgn")
+nodes/fragment/14/position = Vector2(-920, 120)
+nodes/fragment/15/node = SubResource("VisualShaderNodeTexture_6ar1o")
+nodes/fragment/15/position = Vector2(-600, 120)
+nodes/fragment/connections = PackedInt32Array(5, 0, 4, 2, 8, 0, 6, 2, 11, 0, 10, 2, 10, 0, 12, 1, 12, 0, 6, 0, 13, 0, 12, 2, 14, 0, 15, 2, 15, 0, 0, 0, 6, 0, 0, 9, 4, 0, 12, 0)

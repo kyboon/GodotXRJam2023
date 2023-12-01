@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://b5b1uaejy4nvl"]
+
+[ext_resource type="Shader" uid="uid://buwpmsvxcc5vi" path="res://Assets/Materials/cloth_shader.tres" id="1_i2fos"]
+[ext_resource type="Texture2D" uid="uid://vsmg7yrn72kd" path="res://Assets/Textures/Fabrics/fabrics_0083_color_1k.jpg" id="2_t2bh4"]
+[ext_resource type="Texture2D" uid="uid://cxu6dq0x70645" path="res://Assets/Textures/Fabrics/fabric_0032_normal_opengl_1k.png" id="3_nq0lv"]
+[ext_resource type="Texture2D" uid="uid://b2cdwsyi0pif1" path="res://Assets/Textures/Fabrics/paper_0022_normal_opengl_1k.png" id="4_fkl7v"]
+
+[resource]
+render_priority = 0
+shader = ExtResource("1_i2fos")
+shader_parameter/normal_blend_weight = 0.33
+shader_parameter/FloatParameterTemp = 0.0
+shader_parameter/main_color = ExtResource("2_t2bh4")
+shader_parameter/wrinkle_normal_main = ExtResource("3_nq0lv")
+shader_parameter/wrinkle_normal_secondary = ExtResource("4_fkl7v")

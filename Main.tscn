@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci6ywe8vjgfu7"]
+
+[ext_resource type="Material" uid="uid://b5b1uaejy4nvl" path="res://Assets/Materials/cloth_mat.tres" id="1_jy3pp"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_hhwki"]
+material = ExtResource("1_jy3pp")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_hhwki")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.273203, -0.369102, 0.888326, 5.78204e-09, 0.923458, 0.3837, -0.961956, 0.104828, -0.252292, -4.89248, 0, 0)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.67514, 0.73769, 0, -0.73769, 0.67514, 0, 1.06923, 1.37088)
