@@ -1,5 +1,8 @@
 extends Node
 
+# Reference: https://alfredbaudisch.com/blog/gamedev/godot-engine/godot-engine-in-game-splat-map-texture-painting-dirt-removal-effect/
+# Slightly modified for use in Godot 4
+
 class_name Point2UVConverter
 
 @export var mesh_input: MeshInstance3D
@@ -11,14 +14,13 @@ var mesh_instance
 var transform_vertex_to_global = true
 
 var _face_count := 0
-var _world_normals := PackedVector3Array()#//PoolVector3Array()
+var _world_normals := PackedVector3Array()
 var _world_vertices := []
 var _local_face_vertices := []
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	set_mesh(mesh_input)
-	pass # Replace with function body.
 
 func set_mesh(_mesh_instance):
 	mesh_instance = _mesh_instance
