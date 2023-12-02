@@ -1,5 +1,6 @@
 extends RigidBody3D
 
+@export var steamer: ClothesSteamer
 @export var move_speed: float = 0.2
 var current_m_vector: Vector3 = Vector3.ZERO
 # Called when the node enters the scene tree for the first time.
@@ -47,3 +48,5 @@ func _input(event):
 	elif event.is_action_released("move_down"):
 		current_m_vector -= Vector3.DOWN * move_speed
 
+	if event is InputEventKey and event.keycode == KEY_SPACE:
+		steamer.set_pressing(event.is_pressed())

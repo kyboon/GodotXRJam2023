@@ -13,8 +13,9 @@ func _ready():
 func _process(delta):
 	pass
 
-func move_brush(position: Vector2):
+func move_brush(position: Vector2, brush_amount: float):
 	render_target_update_mode = SubViewport.UPDATE_ONCE
+	brush.self_modulate.a = brush_amount
 	brush.position = position
 	
 func brush_size():
