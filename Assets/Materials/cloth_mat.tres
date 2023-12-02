@@ -10,8 +10,10 @@
 render_priority = 0
 shader = ExtResource("1_i2fos")
 shader_parameter/wetness_blend_weight = 0.0
+shader_parameter/show_hint = false
+shader_parameter/hint_color = Color(0, 1, 1, 1)
 shader_parameter/wrinkle_blend_weight = 0.5
-shader_parameter/NormalDepth = 1.0
+shader_parameter/NormalDepth = 1.5
 shader_parameter/main_color = ExtResource("2_t2bh4")
 shader_parameter/wrinkle_normal_main = ExtResource("3_nq0lv")
 shader_parameter/wrinkle_normal_secondary = ExtResource("4_fkl7v")

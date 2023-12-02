@@ -172,6 +172,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="DrawPreview" type="SubViewportContainer" parent="PaintStack"]
+layout_mode = 0
 offset_right = 512.0
 offset_bottom = 512.0
 scale = Vector2(0.5, 0.5)
@@ -192,6 +193,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("6_mw3it")
 
 [node name="CalculationPreview" type="SubViewportContainer" parent="PaintStack"]
+layout_mode = 0
 offset_top = 256.0
 offset_right = 128.0
 offset_bottom = 384.0
@@ -213,6 +215,7 @@ texture_filter = 2
 position = Vector2(256, 256)
 
 [node name="CalculationPreview2" type="SubViewportContainer" parent="PaintStack"]
+layout_mode = 0
 offset_top = 384.0
 offset_right = 40.0
 offset_bottom = 424.0
@@ -234,6 +237,7 @@ texture_filter = 2
 position = Vector2(64, 64)
 
 [node name="CalculationPreview3" type="SubViewportContainer" parent="PaintStack"]
+layout_mode = 0
 offset_top = 424.0
 offset_right = 40.0
 offset_bottom = 464.0
@@ -255,4 +259,4 @@ position = Vector2(16, 16)
 
 [node name="ProgressLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
-text = "Progress: 0"
+text = "Progress: 0%"
