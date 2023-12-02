@@ -6,6 +6,7 @@
 *.import
 export.cfg
 export_presets.cfg
+*.tmp
 
 /[Bb]uilds/
 /[Bb]uild/
