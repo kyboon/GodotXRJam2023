@@ -43,3 +43,19 @@ func set_hinting(is_hinting: bool):
 	var shader_mat = fabric_mesh.get_active_material(0) as ShaderMaterial
 	if shader_mat:
 		shader_mat.set_shader_parameter("show_hint", hinting)
+		
+func set_grab(grabbing: bool):
+	if grabbing and is_colliding():
+		var uv_coords = converter.get_uv_coords(get_collision_point(), get_collision_normal())
+		if uv_coords:
+			uv_to_soft_point(uv_coords)
+			pass
+
+func uv_to_soft_point(uv: Vector2):
+	var x_coords = 1 - uv.x
+	var y_coords = 1 - uv.y
+	var x_point = roundi(x_coords * 16)
+	var y_point = roundi(y_coords * 16)
+	var point_index = y_point * 17 + x_point
+	print(uv)
+	print("%d %d" % [x_point, y_point])

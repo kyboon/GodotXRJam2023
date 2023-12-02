@@ -53,3 +53,6 @@ func _input(event):
 	
 	if event is InputEventKey and event.keycode == KEY_SHIFT:
 		steamer.set_hinting(event.is_pressed())
+		
+	if event is InputEventKey and event.keycode == KEY_1:
+		steamer.set_grab(event.is_pressed())
