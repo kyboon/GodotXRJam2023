@@ -3,20 +3,13 @@ extends SubViewport
 class_name DrawViewport
 
 @export var brush: Sprite2D
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
+@export var cal_vp: CalculationViewport
+@export var progressLabel: Label3D
 
 func move_brush(position: Vector2, brush_amount: float):
 	render_target_update_mode = SubViewport.UPDATE_ONCE
 	brush.self_modulate.a = brush_amount
 	brush.position = position
 	
-func brush_size():
-	return brush.texture.get_height()
+	var progress = cal_vp.set_texture(get_texture())
+	progressLabel.text = "Progress: %d%%" % roundi(progress * 100)
