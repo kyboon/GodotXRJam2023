@@ -1,43 +1,46 @@
-[gd_scene load_steps=38 format=3 uid="uid://ci6ywe8vjgfu7"]
+[gd_scene load_steps=59 format=3 uid="uid://ci6ywe8vjgfu7"]
 
 [ext_resource type="Script" path="res://Scripts/FlatTester.gd" id="1_ng10s"]
 [ext_resource type="Script" path="res://Scripts/ClothesSteamer.gd" id="2_b2lqm"]
 [ext_resource type="Texture2D" uid="uid://bpc63303ceb2f" path="res://Assets/Textures/vapor_tex.png" id="3_oqdnv"]
 [ext_resource type="Script" path="res://Scripts/Point2UVConverter.gd" id="4_1gywa"]
+[ext_resource type="Material" uid="uid://crjk2356twhd6" path="res://Assets/Materials/white_plastic_mat.tres" id="4_t7ktu"]
 [ext_resource type="Script" path="res://Scripts/DrawViewport.gd" id="5_ps51e"]
+[ext_resource type="Material" uid="uid://cexhvwuyhnvje" path="res://Assets/Materials/black_plastic_mat.tres" id="5_q51t2"]
 [ext_resource type="Texture2D" uid="uid://bmlxvwyi7547k" path="res://Assets/Textures/brush_tex.png" id="6_8xsnv"]
 [ext_resource type="Script" path="res://Scripts/CalculationViewport.gd" id="7_bfxky"]
 [ext_resource type="Script" path="res://Scripts/FabricSpawner.gd" id="8_assqg"]
-[ext_resource type="Texture2D" uid="uid://bl6p6w8cr15wl" path="res://Assets/Textures/Fabrics/fabric_0006_color_1k.jpg" id="9_sdl7e"]
-[ext_resource type="Texture2D" uid="uid://bqnq3relvv08f" path="res://Assets/Textures/Fabrics/fabric_0003_color_1k.jpg" id="10_i7vjy"]
-[ext_resource type="Texture2D" uid="uid://ctuo0ianh458q" path="res://Assets/Textures/Fabrics/fabrics_0084_color_1k.jpg" id="11_bqttc"]
-[ext_resource type="Texture2D" uid="uid://vsmg7yrn72kd" path="res://Assets/Textures/Fabrics/fabrics_0083_color_1k.jpg" id="12_vwsh7"]
-[ext_resource type="Texture2D" uid="uid://3bgckub54sun" path="res://Assets/Textures/Fabrics/fabrics_0076_color_1k.jpg" id="13_48t4a"]
-[ext_resource type="Texture2D" uid="uid://bxlx6iooli7wj" path="res://Assets/Textures/Fabrics/fabrics_0070_color_1k.jpg" id="14_mvk5r"]
-[ext_resource type="Texture2D" uid="uid://48pysrs6noie" path="res://Assets/Textures/Fabrics/fabrics_0057_color_1k.jpg" id="15_sld64"]
-[ext_resource type="Texture2D" uid="uid://cvofpnbyyfqlf" path="res://Assets/Textures/Fabrics/fabrics_0055_color_1k.jpg" id="17_ua7iw"]
-[ext_resource type="Texture2D" uid="uid://b551en28jy0um" path="res://Assets/Textures/Fabrics/fabrics_0047_color_1k.jpg" id="18_k3jw0"]
-[ext_resource type="Texture2D" uid="uid://bd6lle3i7gy1h" path="res://Assets/Textures/Fabrics/fabric_0006_normal_opengl_1k.png" id="19_rits7"]
-[ext_resource type="Texture2D" uid="uid://cctrf1btn6o62" path="res://Assets/Textures/Fabrics/fabric_0003_normal_opengl_1k.png" id="20_oiii0"]
-[ext_resource type="Texture2D" uid="uid://chce4f2wnpi62" path="res://Assets/Textures/Fabrics/fabrics_0083_normal_opengl_1k.png" id="21_8dnq8"]
-[ext_resource type="Texture2D" uid="uid://bo5ybqc1vh3m7" path="res://Assets/Textures/Fabrics/fabrics_0076_normal_opengl_1k.png" id="22_0ljsi"]
-[ext_resource type="Texture2D" uid="uid://drrratjynjf1c" path="res://Assets/Textures/Fabrics/fabrics_0070_normal_opengl_1k.png" id="23_n2nis"]
-[ext_resource type="Texture2D" uid="uid://2j8428ch4n8t" path="res://Assets/Textures/Fabrics/fabrics_0057_normal_opengl_1k.png" id="24_up45e"]
-[ext_resource type="Texture2D" uid="uid://c5oqv6miu828b" path="res://Assets/Textures/Fabrics/fabrics_0055_normal_opengl_1k.png" id="26_mokhi"]
-[ext_resource type="Texture2D" uid="uid://dxt7k5mpohqda" path="res://Assets/Textures/Fabrics/fabrics_0047_normal_opengl_1k.png" id="27_5qnpx"]
+[ext_resource type="Texture2D" uid="uid://bl6p6w8cr15wl" path="res://Assets/Textures/TextureCan/Fabrics/fabric_0006_color_1k.jpg" id="9_sdl7e"]
+[ext_resource type="PackedScene" uid="uid://dsn2bpk44x8i6" path="res://Scenes/Fabric.tscn" id="9_up647"]
+[ext_resource type="Texture2D" uid="uid://bqnq3relvv08f" path="res://Assets/Textures/TextureCan/Fabrics/fabric_0003_color_1k.jpg" id="10_i7vjy"]
+[ext_resource type="Texture2D" uid="uid://ctuo0ianh458q" path="res://Assets/Textures/TextureCan/Fabrics/fabrics_0084_color_1k.jpg" id="11_bqttc"]
+[ext_resource type="Texture2D" uid="uid://vsmg7yrn72kd" path="res://Assets/Textures/TextureCan/Fabrics/fabrics_0083_color_1k.jpg" id="12_vwsh7"]
+[ext_resource type="Texture2D" uid="uid://3bgckub54sun" path="res://Assets/Textures/TextureCan/Fabrics/fabrics_0076_color_1k.jpg" id="13_48t4a"]
+[ext_resource type="Texture2D" uid="uid://bxlx6iooli7wj" path="res://Assets/Textures/TextureCan/Fabrics/fabrics_0070_color_1k.jpg" id="14_mvk5r"]
+[ext_resource type="Texture2D" uid="uid://48pysrs6noie" path="res://Assets/Textures/TextureCan/Fabrics/fabrics_0057_color_1k.jpg" id="15_sld64"]
+[ext_resource type="Texture2D" uid="uid://cvofpnbyyfqlf" path="res://Assets/Textures/TextureCan/Fabrics/fabrics_0055_color_1k.jpg" id="17_ua7iw"]
+[ext_resource type="Texture2D" uid="uid://b551en28jy0um" path="res://Assets/Textures/TextureCan/Fabrics/fabrics_0047_color_1k.jpg" id="18_k3jw0"]
+[ext_resource type="Texture2D" uid="uid://bd6lle3i7gy1h" path="res://Assets/Textures/TextureCan/Fabrics/fabric_0006_normal_opengl_1k.png" id="19_rits7"]
+[ext_resource type="Texture2D" uid="uid://cctrf1btn6o62" path="res://Assets/Textures/TextureCan/Fabrics/fabric_0003_normal_opengl_1k.png" id="20_oiii0"]
+[ext_resource type="Texture2D" uid="uid://chce4f2wnpi62" path="res://Assets/Textures/TextureCan/Fabrics/fabrics_0083_normal_opengl_1k.png" id="21_8dnq8"]
+[ext_resource type="Texture2D" uid="uid://bo5ybqc1vh3m7" path="res://Assets/Textures/TextureCan/Fabrics/fabrics_0076_normal_opengl_1k.png" id="22_0ljsi"]
+[ext_resource type="Texture2D" uid="uid://drrratjynjf1c" path="res://Assets/Textures/TextureCan/Fabrics/fabrics_0070_normal_opengl_1k.png" id="23_n2nis"]
+[ext_resource type="Texture2D" uid="uid://2j8428ch4n8t" path="res://Assets/Textures/TextureCan/Fabrics/fabrics_0057_normal_opengl_1k.png" id="24_up45e"]
+[ext_resource type="Texture2D" uid="uid://c5oqv6miu828b" path="res://Assets/Textures/TextureCan/Fabrics/fabrics_0055_normal_opengl_1k.png" id="26_mokhi"]
+[ext_resource type="Texture2D" uid="uid://dxt7k5mpohqda" path="res://Assets/Textures/TextureCan/Fabrics/fabrics_0047_normal_opengl_1k.png" id="27_5qnpx"]
+[ext_resource type="Texture2D" uid="uid://dhi5qk0otox0j" path="res://Assets/Textures/TextureCan/WoodTile/wood_0056_color_1k.jpg" id="27_l0ygh"]
+[ext_resource type="Texture2D" uid="uid://b10q2khbodswm" path="res://Assets/Textures/TextureCan/WoodTile/wood_0056_ao_1k.jpg" id="28_b4bfn"]
+[ext_resource type="Texture2D" uid="uid://kx3icd0v1gf3" path="res://Assets/Textures/TextureCan/WoodTile/wood_0056_height_1k.png" id="29_abcrf"]
+[ext_resource type="Texture2D" uid="uid://byr8itrfojagb" path="res://Assets/Textures/TextureCan/WoodTile/wood_0056_normal_opengl_1k.png" id="30_3svwx"]
+[ext_resource type="Texture2D" uid="uid://cjsaev6qhng2l" path="res://Assets/Textures/TextureCan/WoodTile/wood_0056_roughness_1k.jpg" id="31_uu8q7"]
+[ext_resource type="Material" uid="uid://cfcnqnj7lb62p" path="res://Assets/Materials/wood_table_mat.tres" id="32_tpmmn"]
+[ext_resource type="Material" uid="uid://cr5ic20q4syar" path="res://Assets/Materials/brick_mat.tres" id="35_ffl76"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nvux5"]
 radius = 0.2
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_g6k45"]
-radius = 0.125
-height = 0.4
-
-[sub_resource type="BoxMesh" id="BoxMesh_8o1ou"]
-size = Vector3(0.1, 0.1, 0.2)
-
-[sub_resource type="BoxMesh" id="BoxMesh_5olsy"]
-size = Vector3(0.2, 0.12, 0.05)
+[sub_resource type="SphereShape3D" id="SphereShape3D_wu8lo"]
+radius = 0.145
 
 [sub_resource type="Curve" id="Curve_04hk0"]
 _data = [Vector2(0, 0.527472), 0.0, 0.0, 0, 0, Vector2(0.927536, 0), 0.0, 0.0, 0, 0]
@@ -87,37 +90,108 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_ejyp3")
 size = Vector2(0.5, 0.5)
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_ms8rp"]
-radius = 0.2
-height = 1.6
+[sub_resource type="CylinderMesh" id="CylinderMesh_olati"]
+material = ExtResource("4_t7ktu")
+top_radius = 0.03
+bottom_radius = 0.05
+height = 0.125
+radial_segments = 32
+rings = 2
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_4uoqm"]
+material = ExtResource("4_t7ktu")
+radius = 0.1
+height = 0.4
+radial_segments = 32
+rings = 4
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_n14ld"]
+material = ExtResource("5_q51t2")
+top_radius = 0.015
+bottom_radius = 0.02
+height = 0.1
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_8os6r"]
+material = ExtResource("4_t7ktu")
+radius = 0.05
+height = 0.25
+radial_segments = 32
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c1rpa"]
+albedo_color = Color(0.160784, 0.160784, 0.160784, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_jhtsa"]
+material = SubResource("StandardMaterial3D_c1rpa")
+inner_radius = 0.005
+outer_radius = 0.015
+rings = 16
+ring_segments = 3
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_22nbr"]
+size = Vector3(5, 1, 5)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o53ru"]
+albedo_texture = ExtResource("27_l0ygh")
+roughness_texture = ExtResource("31_uu8q7")
+normal_enabled = true
+normal_texture = ExtResource("30_3svwx")
+ao_enabled = true
+ao_texture = ExtResource("28_b4bfn")
+heightmap_enabled = true
+heightmap_texture = ExtResource("29_abcrf")
+uv1_scale = Vector3(5, 5, 5)
+uv2_scale = Vector3(5, 5, 5)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_mq22u"]
+material = SubResource("StandardMaterial3D_o53ru")
+size = Vector2(5, 5)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_qxs6w"]
+material = ExtResource("32_tpmmn")
+top_radius = 0.025
+bottom_radius = 0.025
+height = 0.75
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ifupf"]
+size = Vector3(0.6, 0.075, 1.2)
+
+[sub_resource type="BoxMesh" id="BoxMesh_6grqc"]
+material = ExtResource("32_tpmmn")
+size = Vector3(1.2, 0.075, 0.6)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xpf87"]
+size = Vector3(5, 2, 1)
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_cvaio"]
+material = ExtResource("35_ffl76")
+size = Vector2(5, 2)
 
 [node name="Node3D" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.487022, -0.335119, 0.806539, 1.39241e-08, 0.923458, 0.3837, -0.87339, -0.18687, 0.449744, -4.89248, 0, 0)
+transform = Transform3D(0.487022, -0.335119, 0.806539, 1.39241e-08, 0.923458, 0.383699, -0.87339, -0.18687, 0.449744, -4.89248, 1.13068, 0)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.47292, -0.648459, 0.596529, 0.13342, 0.616514, 0.775957, -0.870945, 0.446555, -0.205044, 0, 1, 0)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.843063, 0.537815, 0, -0.537815, 0.843063, 0, 2.14259, 1.80061)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+current = true
 
 [node name="SteamerHead" type="RigidBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.553056, 0.749371)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.931481, 0.952796, 0.749371)
 freeze = true
 freeze_mode = 1
 
 [node name="PressureCollisionShape" type="CollisionShape3D" parent="SteamerHead"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0841662)
 shape = SubResource("SphereShape3D_nvux5")
+disabled = true
 
 [node name="BodyCollisionShape" type="CollisionShape3D" parent="SteamerHead"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
-shape = SubResource("CapsuleShape3D_g6k45")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SteamerHead"]
-mesh = SubResource("BoxMesh_8o1ou")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SteamerHead/MeshInstance3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
-mesh = SubResource("BoxMesh_5olsy")
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.0495017, -0.0363197)
+shape = SubResource("SphereShape3D_wu8lo")
 
 [node name="Steamer" type="RayCast3D" parent="SteamerHead" node_paths=PackedStringArray("converter", "draw_vp", "particle", "pressureCollisionShape")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
@@ -142,6 +216,39 @@ steamer = NodePath("../Steamer")
 move_speed = 0.5
 fabric_spawner = NodePath("../../FabricSpawner")
 parent_rb = NodePath("..")
+
+[node name="Visual" type="Node3D" parent="SteamerHead"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="SteamerHead/Visual"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -0.5, 0, 1, -2.18557e-08, 0, 0, 0)
+mesh = SubResource("CylinderMesh_olati")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="SteamerHead/Visual"]
+transform = Transform3D(1, 0, 0, 0, -6.55671e-09, 0.5, 0, -0.15, -2.18557e-08, 0, 0, -0.0881431)
+mesh = SubResource("CapsuleMesh_4uoqm")
+skeleton = NodePath("../MeshInstance3D")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="SteamerHead/Visual"]
+transform = Transform3D(1, 0, 0, 0, -0.942321, -0.334712, 0, 0.334712, -0.942321, 0, -0.0578849, 0)
+mesh = SubResource("CylinderMesh_n14ld")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="SteamerHead/Visual"]
+transform = Transform3D(1, 0, 0, 0, 0.25, 0, 0, 0, 1, 0, -0.124893, -0.00412363)
+mesh = SubResource("CapsuleMesh_8os6r")
+
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="SteamerHead/Visual"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 2.04, 0, -1, -8.91712e-08, 0, 0, -0.118541)
+mesh = SubResource("TorusMesh_jhtsa")
+
+[node name="MeshInstance3D6" type="MeshInstance3D" parent="SteamerHead/Visual"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 2.04, 0, -1, -8.91712e-08, -0.05, 0, -0.119)
+mesh = SubResource("TorusMesh_jhtsa")
+
+[node name="MeshInstance3D7" type="MeshInstance3D" parent="SteamerHead/Visual"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 2.04, 0, -1, -8.91712e-08, 0.05, 0, -0.119)
+mesh = SubResource("TorusMesh_jhtsa")
 
 [node name="Point2UVConverter" type="Node" parent="."]
 script = ExtResource("4_1gywa")
@@ -246,17 +353,100 @@ texture_filter = 2
 position = Vector2(16, 16)
 
 [node name="ProgressLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.166, 0.075)
 text = "Progress: 0%"
 
-[node name="FabricSpawner" type="Node3D" parent="." node_paths=PackedStringArray("p2uv_converter", "steamer", "draw_viewport")]
+[node name="FabricSpawner" type="Node3D" parent="." node_paths=PackedStringArray("p2uv_converter", "steamer", "draw_viewport", "current_fabric")]
 script = ExtResource("8_assqg")
 p2uv_converter = NodePath("../Point2UVConverter")
 steamer = NodePath("../SteamerHead/Steamer")
 draw_viewport = NodePath("../PaintStack/DrawPreview/DrawViewport")
+current_fabric = NodePath("Fabric")
 fabric_color_texs = Array[Texture2D]([ExtResource("9_sdl7e"), ExtResource("10_i7vjy"), ExtResource("11_bqttc"), ExtResource("12_vwsh7"), ExtResource("13_48t4a"), ExtResource("14_mvk5r"), ExtResource("15_sld64"), ExtResource("17_ua7iw"), ExtResource("18_k3jw0")])
 fabric_normal_texs = Array[Texture2D]([ExtResource("19_rits7"), ExtResource("20_oiii0"), ExtResource("21_8dnq8"), ExtResource("21_8dnq8"), ExtResource("22_0ljsi"), ExtResource("23_n2nis"), ExtResource("24_up45e"), ExtResource("26_mokhi"), ExtResource("27_5qnpx")])
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.811388, 1.01607)
-mesh = SubResource("CapsuleMesh_ms8rp")
+[node name="Fabric" parent="FabricSpawner" instance=ExtResource("9_up647")]
+
+[node name="Enviroments" type="Node3D" parent="."]
+
+[node name="Floor" type="StaticBody3D" parent="Enviroments"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroments/Floor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+shape = SubResource("BoxShape3D_22nbr")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroments/Floor"]
+mesh = SubResource("PlaneMesh_mq22u")
+
+[node name="Table" type="Node3D" parent="Enviroments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
+
+[node name="Leg" type="MeshInstance3D" parent="Enviroments/Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.375, 0.55)
+mesh = SubResource("CylinderMesh_qxs6w")
+
+[node name="Leg2" type="MeshInstance3D" parent="Enviroments/Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.25, 0.375, -0.55)
+mesh = SubResource("CylinderMesh_qxs6w")
+
+[node name="Leg3" type="MeshInstance3D" parent="Enviroments/Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.375, 0.55)
+mesh = SubResource("CylinderMesh_qxs6w")
+
+[node name="Leg4" type="MeshInstance3D" parent="Enviroments/Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.375, -0.55)
+mesh = SubResource("CylinderMesh_qxs6w")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Enviroments/Table"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroments/Table/StaticBody3D"]
+shape = SubResource("BoxShape3D_ifupf")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroments/Table/StaticBody3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+mesh = SubResource("BoxMesh_6grqc")
+
+[node name="Wall" type="StaticBody3D" parent="Enviroments"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroments/Wall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
+shape = SubResource("BoxShape3D_xpf87")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroments/Wall"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+mesh = SubResource("PlaneMesh_cvaio")
+
+[node name="Wall2" type="StaticBody3D" parent="Enviroments"]
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 2)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroments/Wall2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
+shape = SubResource("BoxShape3D_xpf87")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroments/Wall2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+mesh = SubResource("PlaneMesh_cvaio")
+
+[node name="Wall3" type="StaticBody3D" parent="Enviroments"]
+transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 2, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroments/Wall3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
+shape = SubResource("BoxShape3D_xpf87")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroments/Wall3"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+mesh = SubResource("PlaneMesh_cvaio")
+
+[node name="Wall4" type="StaticBody3D" parent="Enviroments"]
+transform = Transform3D(8.74228e-08, 0, 1, 0, 1, 0, -1, 0, 8.74228e-08, -2, 0, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroments/Wall4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
+shape = SubResource("BoxShape3D_xpf87")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroments/Wall4"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+mesh = SubResource("PlaneMesh_cvaio")

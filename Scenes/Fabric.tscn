@@ -1,9 +1,9 @@
 [gd_scene load_steps=39 format=3 uid="uid://dsn2bpk44x8i6"]
 
-[ext_resource type="Texture2D" uid="uid://chce4f2wnpi62" path="res://Assets/Textures/Fabrics/fabrics_0083_normal_opengl_1k.png" id="1_t7ree"]
-[ext_resource type="Texture2D" uid="uid://vsmg7yrn72kd" path="res://Assets/Textures/Fabrics/fabrics_0083_color_1k.jpg" id="2_rxegf"]
-[ext_resource type="Texture2D" uid="uid://cxu6dq0x70645" path="res://Assets/Textures/Fabrics/fabric_0032_normal_opengl_1k.png" id="3_pbniu"]
-[ext_resource type="Texture2D" uid="uid://b2cdwsyi0pif1" path="res://Assets/Textures/Fabrics/paper_0022_normal_opengl_1k.png" id="4_5h8ni"]
+[ext_resource type="Texture2D" uid="uid://chce4f2wnpi62" path="res://Assets/Textures/TextureCan/Fabrics/fabrics_0083_normal_opengl_1k.png" id="1_5hp4l"]
+[ext_resource type="Texture2D" uid="uid://vsmg7yrn72kd" path="res://Assets/Textures/TextureCan/Fabrics/fabrics_0083_color_1k.jpg" id="2_vc2en"]
+[ext_resource type="Texture2D" uid="uid://cxu6dq0x70645" path="res://Assets/Textures/TextureCan/Fabrics/fabric_0032_normal_opengl_1k.png" id="3_fuycs"]
+[ext_resource type="Texture2D" uid="uid://b2cdwsyi0pif1" path="res://Assets/Textures/TextureCan/Fabrics/paper_0022_normal_opengl_1k.png" id="4_jrmtt"]
 [ext_resource type="Script" path="res://Scripts/Fabric.gd" id="5_l16sx"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_5o5qj"]
@@ -339,18 +339,19 @@ shader_parameter/show_hint = false
 shader_parameter/hint_color = Color(0, 1, 1, 1)
 shader_parameter/wrinkle_blend_weight = 0.5
 shader_parameter/NormalDepth = 1.5
-shader_parameter/main_color = ExtResource("2_rxegf")
-shader_parameter/wrinkle_normal_main = ExtResource("3_pbniu")
-shader_parameter/wrinkle_normal_secondary = ExtResource("4_5h8ni")
-shader_parameter/flat_normal = ExtResource("1_t7ree")
+shader_parameter/main_color = ExtResource("2_vc2en")
+shader_parameter/wrinkle_normal_main = ExtResource("3_fuycs")
+shader_parameter/wrinkle_normal_secondary = ExtResource("4_jrmtt")
+shader_parameter/flat_normal = ExtResource("1_5hp4l")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4up85"]
 material = SubResource("ShaderMaterial_ilplc")
+size = Vector2(1.5, 1.5)
 subdivide_width = 15
 subdivide_depth = 15
 
 [node name="Fabric" type="SoftBody3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1.25, 0)
 mesh = SubResource("PlaneMesh_4up85")
 simulation_precision = 50
 linear_stiffness = 0.03

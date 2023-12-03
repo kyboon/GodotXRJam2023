@@ -7,7 +7,6 @@ var shader_mat: ShaderMaterial
 func _ready():
 	shader_mat = get_active_material(0)
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass

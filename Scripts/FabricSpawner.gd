@@ -32,4 +32,5 @@ func spawn_new_fabric():
 	steamer.fabric = current_fabric
 	
 	draw_viewport.refresh()
+	draw_viewport.move_brush(Vector2.LEFT * 1000, 0)
 	
