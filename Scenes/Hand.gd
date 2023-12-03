@@ -26,6 +26,7 @@ func _on_area_3d_body_exited(body):
 		entered_steamer_head = null
 
 func _on_button_pressed(name):
+	print(name)
 	if name == "grip_click":
 		if entered_steamer_head:
 			if entered_steamer_head.attach(self): # if attach success
@@ -34,6 +35,10 @@ func _on_button_pressed(name):
 	elif name == "trigger_click":
 		if attached_steamer_head:
 			attached_steamer_head.press_btn()
+			
+	elif name == "ax_button":
+		if attached_steamer_head:
+			attached_steamer_head.press_hint()
 
 
 func _on_button_released(name):
@@ -44,3 +49,7 @@ func _on_button_released(name):
 	elif name == "trigger_click":
 		if attached_steamer_head:
 			attached_steamer_head.release_btn()
+			
+	elif name == "ax_button":
+		if attached_steamer_head:
+			attached_steamer_head.release_hint()

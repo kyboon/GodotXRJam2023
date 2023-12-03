@@ -11,6 +11,9 @@ signal progress_above_threshold()
 @export var highscore_label: Label3D
 @export var black_bg: ColorRect
 
+@export var mini_progress_label: Label3D
+@export var mini_time_label: Label3D
+
 @export var threshold: int = 90
 
 const FILE_NAME = "user://clothes_steamer_hs.res"
@@ -33,6 +36,7 @@ func _process(delta):
 	var minutes = seconds_rounded / 60
 	var seconds = seconds_rounded % 60
 	time_label.text = "Time:\n%02d:%02d" % [minutes, seconds]
+	mini_time_label.text = "%02d:%02d" % [minutes, seconds]
 	
 
 func move_brush(position: Vector2, brush_amount: float, first: bool = false):
@@ -48,6 +52,7 @@ func move_brush(position: Vector2, brush_amount: float, first: bool = false):
 		var progress = cal_vp.set_texture(get_texture())
 		var progress_rounded = roundi(progress * 100)
 		progress_label.text = "Progress: %d%%" % progress_rounded
+		mini_progress_label.text = "%d%%" % progress_rounded
 	
 		if progress_rounded >= threshold:
 			var seconds_rounded = roundi(time_elapsed)
@@ -66,6 +71,7 @@ func refresh():
 	render_target_clear_mode = SubViewport.CLEAR_MODE_ONCE
 	render_target_update_mode = SubViewport.UPDATE_ONCE
 	progress_label.text = "Progress: 0%"
+	mini_progress_label.text = "0%"
 	
 	
 func save_high_score(new_high_score: int):

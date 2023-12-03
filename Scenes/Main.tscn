@@ -1,4 +1,4 @@
-[gd_scene load_steps=75 format=3 uid="uid://ci6ywe8vjgfu7"]
+[gd_scene load_steps=72 format=3 uid="uid://ci6ywe8vjgfu7"]
 
 [ext_resource type="Script" path="res://Scripts/Main.gd" id="1_egb63"]
 [ext_resource type="Script" path="res://Scripts/FlatTester.gd" id="1_ng10s"]
@@ -172,9 +172,6 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_e4phk")
 size = Vector2(0.05, 0.02)
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_22nbr"]
-size = Vector3(5, 1, 5)
-
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o53ru"]
 albedo_texture = ExtResource("27_l0ygh")
 roughness_texture = ExtResource("31_uu8q7")
@@ -197,15 +194,9 @@ top_radius = 0.025
 bottom_radius = 0.025
 height = 0.75
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_ifupf"]
-size = Vector3(0.6, 0.075, 1.2)
-
 [sub_resource type="BoxMesh" id="BoxMesh_6grqc"]
 material = ExtResource("32_tpmmn")
 size = Vector3(1.2, 0.075, 0.6)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_xpf87"]
-size = Vector3(5, 2, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cvaio"]
 material = ExtResource("35_ffl76")
@@ -237,7 +228,7 @@ sky = SubResource("Sky_xitqr")
 [node name="Node3D" type="Node3D"]
 script = ExtResource("1_egb63")
 
-[node name="SteamerHead" type="RigidBody3D" parent="." node_paths=PackedStringArray("steamer")]
+[node name="SteamerHead" type="RigidBody3D" parent="." node_paths=PackedStringArray("hint_label", "hint_timer", "steamer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.931481, 0.952796, 0.749371)
 collision_layer = 2
 collision_mask = 4
@@ -245,19 +236,21 @@ lock_rotation = true
 freeze = true
 freeze_mode = 1
 script = ExtResource("2_i3bxp")
+hint_label = NodePath("MiniHintLabel")
+hint_timer = NodePath("Timer")
 steamer = NodePath("Steamer")
 
 [node name="PressureCollisionShape" type="CollisionShape3D" parent="SteamerHead"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0841662)
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.0466992, -0.0878046)
 shape = SubResource("SphereShape3D_nvux5")
 disabled = true
 
 [node name="BodyCollisionShape" type="CollisionShape3D" parent="SteamerHead"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.0495017, -0.0363197)
+transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, 0, 0.0112678, -0.0287764)
 shape = SubResource("SphereShape3D_wu8lo")
 
 [node name="Steamer" type="RayCast3D" parent="SteamerHead" node_paths=PackedStringArray("converter", "draw_vp", "fabric", "particle", "pressureCollisionShape")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, 0, 0.068483, -0.00650626)
 target_position = Vector3(0, -0.5, 0)
 collision_mask = 4
 script = ExtResource("2_b2lqm")
@@ -268,6 +261,7 @@ particle = NodePath("../GPUParticles3D")
 pressureCollisionShape = NodePath("../PressureCollisionShape")
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="SteamerHead"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.068483, -0.00650626)
 cast_shadow = 0
 emitting = false
 amount = 16
@@ -276,6 +270,7 @@ process_material = SubResource("ParticleProcessMaterial_v2krq")
 draw_pass_1 = SubResource("QuadMesh_i5xa2")
 
 [node name="FlatTester" type="Node3D" parent="SteamerHead" node_paths=PackedStringArray("steamer", "fabric_spawner", "parent_rb")]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.068483, -0.00650626)
 script = ExtResource("1_ng10s")
 steamer = NodePath("../Steamer")
 move_speed = 0.5
@@ -283,6 +278,7 @@ fabric_spawner = NodePath("../../FabricSpawner")
 parent_rb = NodePath("..")
 
 [node name="Visual" type="Node3D" parent="SteamerHead"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.068483, -0.00650626)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="SteamerHead/Visual"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -0.5, 0, 1, -2.18557e-08, 0, 0, 0)
@@ -315,6 +311,26 @@ mesh = SubResource("TorusMesh_jhtsa")
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 2.04, 0, -1, -8.91712e-08, 0.05, 0, -0.119)
 mesh = SubResource("TorusMesh_jhtsa")
 
+[node name="MiniProgressLabel" type="Label3D" parent="SteamerHead"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0.075, 0.075, 0)
+pixel_size = 0.0005
+text = "0%"
+
+[node name="MiniTimeLabel" type="Label3D" parent="SteamerHead"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, -0.075, 0.075, 0)
+pixel_size = 0.0005
+text = "00:00
+"
+
+[node name="MiniHintLabel" type="Label3D" parent="SteamerHead"]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0.132233, 0)
+pixel_size = 0.0005
+text = "Press grip to grab"
+
+[node name="Timer" type="Timer" parent="SteamerHead"]
+wait_time = 5.0
+one_shot = true
+
 [node name="Point2UVConverter" type="Node" parent="."]
 script = ExtResource("4_1gywa")
 
@@ -331,7 +347,7 @@ offset_right = 512.0
 offset_bottom = 512.0
 scale = Vector2(0.5, 0.5)
 
-[node name="DrawViewport" type="SubViewport" parent="PaintStack/DrawPreview" node_paths=PackedStringArray("brush", "cal_vp", "progress_label", "time_label", "highscore_label", "black_bg")]
+[node name="DrawViewport" type="SubViewport" parent="PaintStack/DrawPreview" node_paths=PackedStringArray("brush", "cal_vp", "progress_label", "time_label", "highscore_label", "black_bg", "mini_progress_label", "mini_time_label")]
 disable_3d = true
 handle_input_locally = false
 render_target_clear_mode = 1
@@ -343,6 +359,8 @@ progress_label = NodePath("../../../3D UI/ProgressLabel")
 time_label = NodePath("../../../3D UI/TimeLabel")
 highscore_label = NodePath("../../../3D UI/HighScoreLabel")
 black_bg = NodePath("ColorRect")
+mini_progress_label = NodePath("../../../SteamerHead/MiniProgressLabel")
+mini_time_label = NodePath("../../../SteamerHead/MiniTimeLabel")
 
 [node name="ColorRect" type="ColorRect" parent="PaintStack/DrawPreview/DrawViewport"]
 offset_right = 512.0
@@ -449,14 +467,9 @@ draw_pass_1 = SubResource("QuadMesh_eyj7s")
 
 [node name="Enviroments" type="Node3D" parent="."]
 
-[node name="Floor" type="StaticBody3D" parent="Enviroments"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroments/Floor"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
-shape = SubResource("BoxShape3D_22nbr")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroments/Floor"]
+[node name="MeshInstance3D5" type="MeshInstance3D" parent="Enviroments"]
 mesh = SubResource("PlaneMesh_mq22u")
+skeleton = NodePath("")
 
 [node name="Table" type="Node3D" parent="Enviroments"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 1)
@@ -477,67 +490,38 @@ mesh = SubResource("CylinderMesh_qxs6w")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25, 0.375, -0.55)
 mesh = SubResource("CylinderMesh_qxs6w")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Enviroments/Table"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroments/Table/StaticBody3D"]
-shape = SubResource("BoxShape3D_ifupf")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroments/Table/StaticBody3D"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroments/Table"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0.75, 0)
 mesh = SubResource("BoxMesh_6grqc")
+skeleton = NodePath("")
 
-[node name="Wall" type="StaticBody3D" parent="Enviroments"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroments/Wall"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
-shape = SubResource("BoxShape3D_xpf87")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroments/Wall"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroments"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, -2)
 mesh = SubResource("PlaneMesh_cvaio")
+skeleton = NodePath("")
 
-[node name="Wall2" type="StaticBody3D" parent="Enviroments"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 2)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroments/Wall2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
-shape = SubResource("BoxShape3D_xpf87")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroments/Wall2"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Enviroments"]
+transform = Transform3D(-1, 8.74228e-08, -3.82137e-15, 0, -4.37114e-08, -1, -8.74228e-08, -1, 4.37114e-08, 0, 1, 2)
 mesh = SubResource("PlaneMesh_cvaio")
+skeleton = NodePath("")
 
-[node name="Wall3" type="StaticBody3D" parent="Enviroments"]
-transform = Transform3D(0, 0, -1, 0, 1, 0, 1, 0, 0, 2, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroments/Wall3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
-shape = SubResource("BoxShape3D_xpf87")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroments/Wall3"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="Enviroments"]
+transform = Transform3D(0, -1, 4.37114e-08, 0, -4.37114e-08, -1, 1, 0, 0, 2, 1, 0)
 mesh = SubResource("PlaneMesh_cvaio")
+skeleton = NodePath("")
 
-[node name="Wall4" type="StaticBody3D" parent="Enviroments"]
-transform = Transform3D(8.74228e-08, 0, 1, 0, 1, 0, -1, 0, 8.74228e-08, -2, 0, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Enviroments/Wall4"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -0.5)
-shape = SubResource("BoxShape3D_xpf87")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroments/Wall4"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="Enviroments"]
+transform = Transform3D(8.74228e-08, 1, -4.37114e-08, 0, -4.37114e-08, -1, -1, 8.74228e-08, -3.82137e-15, -2, 1, 0)
 mesh = SubResource("PlaneMesh_cvaio")
+skeleton = NodePath("")
 
-[node name="Window1_grp" parent="." instance=ExtResource("36_ymsmi")]
+[node name="Window1_grp" parent="Enviroments" instance=ExtResource("36_ymsmi")]
 transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 2, 1.17811, 0.717253)
 
-[node name="Window1_grp2" parent="." instance=ExtResource("36_ymsmi")]
+[node name="Window1_grp2" parent="Enviroments" instance=ExtResource("36_ymsmi")]
 transform = Transform3D(5.24537e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, 5.24537e-08, -2, 1.17811, -0.282747)
 
-[node name="Door_1_grp" parent="." instance=ExtResource("37_8jo8o")]
+[node name="Door_1_grp" parent="Enviroments" instance=ExtResource("37_8jo8o")]
 transform = Transform3D(-0.75, 0, 7.54979e-08, 0, 0.75, 0, -1.13247e-07, 0, -0.5, 0, 0, 1.90412)
 
 [node name="3D UI" type="Node3D" parent="."]
@@ -631,6 +615,7 @@ spot_range = 7.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="Lights"]
 environment = SubResource("Environment_jcj50")
 
+[connection signal="timeout" from="SteamerHead/Timer" to="SteamerHead" method="_on_timer_timeout"]
 [connection signal="progress_above_threshold" from="PaintStack/DrawPreview/DrawViewport" to="FabricSpawner" method="_on_draw_viewport_progress_above_threshold"]
 [connection signal="timeout" from="FabricSpawner/Timer" to="FabricSpawner" method="_on_timer_timeout"]
 [connection signal="button_pressed" from="XROrigin3D/LeftHand" to="XROrigin3D/LeftHand" method="_on_button_pressed"]
