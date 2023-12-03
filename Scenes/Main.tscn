@@ -1,4 +1,4 @@
-[gd_scene load_steps=61 format=3 uid="uid://ci6ywe8vjgfu7"]
+[gd_scene load_steps=66 format=3 uid="uid://ci6ywe8vjgfu7"]
 
 [ext_resource type="Script" path="res://Scripts/FlatTester.gd" id="1_ng10s"]
 [ext_resource type="Script" path="res://Scripts/ClothesSteamer.gd" id="2_b2lqm"]
@@ -130,6 +130,45 @@ outer_radius = 0.015
 rings = 16
 ring_segments = 3
 
+[sub_resource type="Curve" id="Curve_8hml4"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_x08gm"]
+curve = SubResource("Curve_8hml4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mmqdq"]
+particle_flag_damping_as_friction = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 1, 0)
+angle_min = 180.0
+angle_max = 360.0
+inherit_velocity_ratio = 1.0
+direction = Vector3(0, 0, 1)
+spread = 90.0
+initial_velocity_min = 2.0
+initial_velocity_max = 4.0
+angular_velocity_min = -90.0
+angular_velocity_max = 90.0
+gravity = Vector3(0, -1, 0)
+damping_min = 50.0
+damping_max = 50.0
+scale_curve = SubResource("CurveTexture_x08gm")
+color = Color(0.501961, 0.501961, 1, 1)
+hue_variation_max = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_e4phk"]
+vertex_color_use_as_albedo = true
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_eyj7s"]
+material = SubResource("StandardMaterial3D_e4phk")
+size = Vector2(0.05, 0.02)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_22nbr"]
 size = Vector3(5, 1, 5)
 
@@ -176,7 +215,7 @@ transform = Transform3D(0.487022, -0.335119, 0.806539, 1.39241e-08, 0.923458, 0.
 shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.952562, 2.16492)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.952562, 1.91927)
 current = true
 
 [node name="SteamerHead" type="RigidBody3D" parent="."]
@@ -357,12 +396,13 @@ position = Vector2(16, 16)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.166, 0.075)
 text = "Progress: 0%"
 
-[node name="FabricSpawner" type="Node3D" parent="." node_paths=PackedStringArray("p2uv_converter", "draw_viewport", "fabric", "spawn_wait_timer")]
+[node name="FabricSpawner" type="Node3D" parent="." node_paths=PackedStringArray("p2uv_converter", "draw_viewport", "fabric", "spawn_wait_timer", "success_particle")]
 script = ExtResource("8_assqg")
 p2uv_converter = NodePath("../Point2UVConverter")
 draw_viewport = NodePath("../PaintStack/DrawPreview/DrawViewport")
 fabric = NodePath("Fabric")
 spawn_wait_timer = NodePath("Timer")
+success_particle = NodePath("SuccessParticle")
 fabric_color_texs = Array[Texture2D]([ExtResource("9_sdl7e"), ExtResource("10_i7vjy"), ExtResource("11_bqttc"), ExtResource("12_vwsh7"), ExtResource("13_48t4a"), ExtResource("14_mvk5r"), ExtResource("15_sld64"), ExtResource("17_ua7iw"), ExtResource("18_k3jw0")])
 fabric_normal_texs = Array[Texture2D]([ExtResource("19_rits7"), ExtResource("20_oiii0"), ExtResource("21_8dnq8"), ExtResource("21_8dnq8"), ExtResource("22_0ljsi"), ExtResource("23_n2nis"), ExtResource("24_up45e"), ExtResource("26_mokhi"), ExtResource("27_5qnpx")])
 
@@ -370,6 +410,15 @@ fabric_normal_texs = Array[Texture2D]([ExtResource("19_rits7"), ExtResource("20_
 
 [node name="Timer" type="Timer" parent="FabricSpawner"]
 one_shot = true
+
+[node name="SuccessParticle" type="GPUParticles3D" parent="FabricSpawner"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.25, 0)
+emitting = false
+amount = 64
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_mmqdq")
+draw_pass_1 = SubResource("QuadMesh_eyj7s")
 
 [node name="Enviroments" type="Node3D" parent="."]
 

@@ -13,16 +13,17 @@ signal progress_above_threshold
 
 func move_brush(position: Vector2, brush_amount: float, first: bool = false):
 	render_target_update_mode = SubViewport.UPDATE_ONCE
-	if !first:
-		black_bg.visible = false
 	brush.self_modulate.a = brush_amount
 	brush.position = position
+	if !first:
+		black_bg.visible = false
+		
+		var progress = cal_vp.set_texture(get_texture())
+		var progress_rounded = roundi(progress * 100)
+		progress_label.text = "Progress: %d%%" % progress_rounded
 	
-	var progress = cal_vp.set_texture(get_texture())
-	var progress_rounded = roundi(progress * 100)
-	progress_label.text = "Progress: %d%%" % progress_rounded
-	if progress_rounded >= threshold:
-		progress_above_threshold.emit()
+		if progress_rounded >= threshold:
+			progress_above_threshold.emit()
 
 func refresh():
 	black_bg.visible = true

@@ -5,6 +5,7 @@ extends Node3D
 
 @export var fabric: Fabric
 @export var spawn_wait_timer: Timer # timer to prevent spawning too frequently and infinite recursive (when threshold signal keep calling)
+@export var success_particle: GPUParticles3D
 
 @export var fabric_color_texs: Array[Texture2D]
 @export var fabric_normal_texs: Array[Texture2D]
@@ -35,6 +36,7 @@ func spawn_new_fabric():
 func _on_draw_viewport_progress_above_threshold():
 	if !spawning:
 		spawn_new_fabric()
+		success_particle.emitting = true
 
 
 func _on_timer_timeout():
