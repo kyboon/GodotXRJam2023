@@ -206,6 +206,7 @@ size = Vector3(5, 2, 1)
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_cvaio"]
 material = ExtResource("35_ffl76")
+flip_faces = true
 size = Vector2(5, 2)
 
 [node name="Node3D" type="Node3D"]
@@ -306,7 +307,7 @@ offset_right = 512.0
 offset_bottom = 512.0
 scale = Vector2(0.5, 0.5)
 
-[node name="DrawViewport" type="SubViewport" parent="PaintStack/DrawPreview" node_paths=PackedStringArray("brush", "cal_vp", "progress_label", "black_bg")]
+[node name="DrawViewport" type="SubViewport" parent="PaintStack/DrawPreview" node_paths=PackedStringArray("brush", "cal_vp", "progress_label", "time_label", "black_bg")]
 disable_3d = true
 handle_input_locally = false
 render_target_clear_mode = 1
@@ -314,7 +315,8 @@ render_target_update_mode = 0
 script = ExtResource("5_ps51e")
 brush = NodePath("Brush")
 cal_vp = NodePath("../../CalculationPreview/CalculationViewport")
-progress_label = NodePath("../../../ProgressLabel")
+progress_label = NodePath("../../../3D UI/ProgressLabel")
+time_label = NodePath("../../../3D UI/TimeLabel")
 black_bg = NodePath("ColorRect")
 
 [node name="ColorRect" type="ColorRect" parent="PaintStack/DrawPreview/DrawViewport"]
@@ -392,17 +394,15 @@ sprite = NodePath("DrawSprite")
 texture_filter = 2
 position = Vector2(16, 16)
 
-[node name="ProgressLabel" type="Label3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.166, 0.075)
-text = "Progress: 0%"
-
-[node name="FabricSpawner" type="Node3D" parent="." node_paths=PackedStringArray("p2uv_converter", "draw_viewport", "fabric", "spawn_wait_timer", "success_particle")]
+[node name="FabricSpawner" type="Node3D" parent="." node_paths=PackedStringArray("p2uv_converter", "draw_viewport", "fabric", "spawn_wait_timer", "success_particle", "steamer", "completed_label")]
 script = ExtResource("8_assqg")
 p2uv_converter = NodePath("../Point2UVConverter")
 draw_viewport = NodePath("../PaintStack/DrawPreview/DrawViewport")
 fabric = NodePath("Fabric")
 spawn_wait_timer = NodePath("Timer")
 success_particle = NodePath("SuccessParticle")
+steamer = NodePath("../SteamerHead/Steamer")
+completed_label = NodePath("../3D UI/CompletedLabel")
 fabric_color_texs = Array[Texture2D]([ExtResource("9_sdl7e"), ExtResource("10_i7vjy"), ExtResource("11_bqttc"), ExtResource("12_vwsh7"), ExtResource("13_48t4a"), ExtResource("14_mvk5r"), ExtResource("15_sld64"), ExtResource("17_ua7iw"), ExtResource("18_k3jw0")])
 fabric_normal_texs = Array[Texture2D]([ExtResource("19_rits7"), ExtResource("20_oiii0"), ExtResource("21_8dnq8"), ExtResource("21_8dnq8"), ExtResource("22_0ljsi"), ExtResource("23_n2nis"), ExtResource("24_up45e"), ExtResource("26_mokhi"), ExtResource("27_5qnpx")])
 
@@ -512,6 +512,23 @@ transform = Transform3D(5.24537e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, 5.24537e-08, -2
 
 [node name="Door_1_grp" parent="." instance=ExtResource("37_8jo8o")]
 transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, 0, 0, 1.90412)
+
+[node name="3D UI" type="Node3D" parent="."]
+
+[node name="ProgressLabel" type="Label3D" parent="3D UI"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0.075)
+text = "Progress: 0%"
+
+[node name="CompletedLabel" type="Label3D" parent="3D UI"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.2, 1.3, 0.075)
+text = "Completed 
+Clothes:
+0"
+
+[node name="TimeLabel" type="Label3D" parent="3D UI"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.2, 1.3, 0.075)
+text = "Time:
+00:00"
 
 [connection signal="progress_above_threshold" from="PaintStack/DrawPreview/DrawViewport" to="FabricSpawner" method="_on_draw_viewport_progress_above_threshold"]
 [connection signal="timeout" from="FabricSpawner/Timer" to="FabricSpawner" method="_on_timer_timeout"]

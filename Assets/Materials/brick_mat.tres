@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://cwo5u3s3puhek" path="res://Assets/Textures/AmbientCG/Bricks/Bricks085_1K-PNG_Roughness.png" id="5_dksk4"]
 
 [resource]
+cull_mode = 1
 albedo_texture = ExtResource("1_oqf20")
 roughness_texture = ExtResource("5_dksk4")
 normal_enabled = true
