@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ci6ywe8vjgfu7"]
+[gd_scene load_steps=38 format=3 uid="uid://ci6ywe8vjgfu7"]
 
 [ext_resource type="Script" path="res://Scripts/FlatTester.gd" id="1_ng10s"]
 [ext_resource type="Script" path="res://Scripts/ClothesSteamer.gd" id="2_b2lqm"]
@@ -8,6 +8,23 @@
 [ext_resource type="Texture2D" uid="uid://bmlxvwyi7547k" path="res://Assets/Textures/brush_tex.png" id="6_8xsnv"]
 [ext_resource type="Script" path="res://Scripts/CalculationViewport.gd" id="7_bfxky"]
 [ext_resource type="Script" path="res://Scripts/FabricSpawner.gd" id="8_assqg"]
+[ext_resource type="Texture2D" uid="uid://bl6p6w8cr15wl" path="res://Assets/Textures/Fabrics/fabric_0006_color_1k.jpg" id="9_sdl7e"]
+[ext_resource type="Texture2D" uid="uid://bqnq3relvv08f" path="res://Assets/Textures/Fabrics/fabric_0003_color_1k.jpg" id="10_i7vjy"]
+[ext_resource type="Texture2D" uid="uid://ctuo0ianh458q" path="res://Assets/Textures/Fabrics/fabrics_0084_color_1k.jpg" id="11_bqttc"]
+[ext_resource type="Texture2D" uid="uid://vsmg7yrn72kd" path="res://Assets/Textures/Fabrics/fabrics_0083_color_1k.jpg" id="12_vwsh7"]
+[ext_resource type="Texture2D" uid="uid://3bgckub54sun" path="res://Assets/Textures/Fabrics/fabrics_0076_color_1k.jpg" id="13_48t4a"]
+[ext_resource type="Texture2D" uid="uid://bxlx6iooli7wj" path="res://Assets/Textures/Fabrics/fabrics_0070_color_1k.jpg" id="14_mvk5r"]
+[ext_resource type="Texture2D" uid="uid://48pysrs6noie" path="res://Assets/Textures/Fabrics/fabrics_0057_color_1k.jpg" id="15_sld64"]
+[ext_resource type="Texture2D" uid="uid://cvofpnbyyfqlf" path="res://Assets/Textures/Fabrics/fabrics_0055_color_1k.jpg" id="17_ua7iw"]
+[ext_resource type="Texture2D" uid="uid://b551en28jy0um" path="res://Assets/Textures/Fabrics/fabrics_0047_color_1k.jpg" id="18_k3jw0"]
+[ext_resource type="Texture2D" uid="uid://bd6lle3i7gy1h" path="res://Assets/Textures/Fabrics/fabric_0006_normal_opengl_1k.png" id="19_rits7"]
+[ext_resource type="Texture2D" uid="uid://cctrf1btn6o62" path="res://Assets/Textures/Fabrics/fabric_0003_normal_opengl_1k.png" id="20_oiii0"]
+[ext_resource type="Texture2D" uid="uid://chce4f2wnpi62" path="res://Assets/Textures/Fabrics/fabrics_0083_normal_opengl_1k.png" id="21_8dnq8"]
+[ext_resource type="Texture2D" uid="uid://bo5ybqc1vh3m7" path="res://Assets/Textures/Fabrics/fabrics_0076_normal_opengl_1k.png" id="22_0ljsi"]
+[ext_resource type="Texture2D" uid="uid://drrratjynjf1c" path="res://Assets/Textures/Fabrics/fabrics_0070_normal_opengl_1k.png" id="23_n2nis"]
+[ext_resource type="Texture2D" uid="uid://2j8428ch4n8t" path="res://Assets/Textures/Fabrics/fabrics_0057_normal_opengl_1k.png" id="24_up45e"]
+[ext_resource type="Texture2D" uid="uid://c5oqv6miu828b" path="res://Assets/Textures/Fabrics/fabrics_0055_normal_opengl_1k.png" id="26_mokhi"]
+[ext_resource type="Texture2D" uid="uid://dxt7k5mpohqda" path="res://Assets/Textures/Fabrics/fabrics_0047_normal_opengl_1k.png" id="27_5qnpx"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nvux5"]
 radius = 0.2
@@ -130,6 +147,7 @@ parent_rb = NodePath("..")
 script = ExtResource("4_1gywa")
 
 [node name="PaintStack" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
@@ -145,7 +163,7 @@ scale = Vector2(0.5, 0.5)
 disable_3d = true
 handle_input_locally = false
 render_target_clear_mode = 1
-render_target_update_mode = 4
+render_target_update_mode = 0
 script = ExtResource("5_ps51e")
 brush = NodePath("Brush")
 cal_vp = NodePath("../../CalculationPreview/CalculationViewport")
@@ -175,7 +193,7 @@ size = Vector2i(128, 128)
 size_2d_override = Vector2i(512, 512)
 size_2d_override_stretch = true
 render_target_clear_mode = 1
-render_target_update_mode = 4
+render_target_update_mode = 0
 script = ExtResource("7_bfxky")
 nextCalculationVP = NodePath("../../CalculationPreview2/CalculationViewport")
 sprite = NodePath("DrawSprite")
@@ -197,7 +215,7 @@ size = Vector2i(32, 32)
 size_2d_override = Vector2i(128, 128)
 size_2d_override_stretch = true
 render_target_clear_mode = 1
-render_target_update_mode = 4
+render_target_update_mode = 0
 script = ExtResource("7_bfxky")
 nextCalculationVP = NodePath("../../CalculationPreview3/CalculationViewport")
 sprite = NodePath("DrawSprite")
@@ -219,7 +237,7 @@ size = Vector2i(8, 8)
 size_2d_override = Vector2i(32, 32)
 size_2d_override_stretch = true
 render_target_clear_mode = 1
-render_target_update_mode = 4
+render_target_update_mode = 0
 script = ExtResource("7_bfxky")
 sprite = NodePath("DrawSprite")
 
@@ -236,6 +254,8 @@ script = ExtResource("8_assqg")
 p2uv_converter = NodePath("../Point2UVConverter")
 steamer = NodePath("../SteamerHead/Steamer")
 draw_viewport = NodePath("../PaintStack/DrawPreview/DrawViewport")
+fabric_color_texs = Array[Texture2D]([ExtResource("9_sdl7e"), ExtResource("10_i7vjy"), ExtResource("11_bqttc"), ExtResource("12_vwsh7"), ExtResource("13_48t4a"), ExtResource("14_mvk5r"), ExtResource("15_sld64"), ExtResource("17_ua7iw"), ExtResource("18_k3jw0")])
+fabric_normal_texs = Array[Texture2D]([ExtResource("19_rits7"), ExtResource("20_oiii0"), ExtResource("21_8dnq8"), ExtResource("21_8dnq8"), ExtResource("22_0ljsi"), ExtResource("23_n2nis"), ExtResource("24_up45e"), ExtResource("26_mokhi"), ExtResource("27_5qnpx")])
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.811388, 1.01607)

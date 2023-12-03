@@ -17,3 +17,7 @@ func set_hinting(is_hinting: bool):
 
 func set_paint_tex(tex: Texture):
 	shader_mat.set_shader_parameter("paint_texture", tex)
+
+func set_fabric_tex(color_tex: Texture, normal_tex: Texture):
+	shader_mat.set_shader_parameter("main_color", color_tex)
+	shader_mat.set_shader_parameter("flat_normal", normal_tex)
