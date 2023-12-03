@@ -7,6 +7,7 @@ class_name ClothesSteamer
 @export var fabric: Fabric
 @export var particle: GPUParticles3D
 @export var pressureCollisionShape: CollisionShape3D
+@export var audio_player: AudioStreamPlayer3D
 
 @export var steam_strength: float = 3
 
@@ -32,6 +33,10 @@ func set_pressing(is_pressing: bool):
 	particle.emitting = is_pressing
 	pressureCollisionShape.disabled = !is_pressing
 	pressing = is_pressing
+	if is_pressing:
+		audio_player.play()
+	else:
+		audio_player.stop()
 	
 func set_paint_tex(tex: Texture):
 	fabric.set_paint_tex(tex)

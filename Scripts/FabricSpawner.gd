@@ -8,6 +8,7 @@ extends Node3D
 @export var success_particle: GPUParticles3D
 
 @export var steamer: ClothesSteamer
+@export var audio_player: AudioStreamPlayer3D
 
 @export var completed_label: Label3D
 
@@ -45,6 +46,7 @@ func _on_draw_viewport_progress_above_threshold():
 		completed_count += 1
 		completed_label.text = "Completed\nClothes:\n%d" % completed_count
 		steamer.set_pressing(false)
+		audio_player.play()
 		
 
 
