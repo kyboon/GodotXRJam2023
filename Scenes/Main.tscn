@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://ci6ywe8vjgfu7"]
+[gd_scene load_steps=61 format=3 uid="uid://ci6ywe8vjgfu7"]
 
 [ext_resource type="Script" path="res://Scripts/FlatTester.gd" id="1_ng10s"]
 [ext_resource type="Script" path="res://Scripts/ClothesSteamer.gd" id="2_b2lqm"]
@@ -35,6 +35,8 @@
 [ext_resource type="Texture2D" uid="uid://cjsaev6qhng2l" path="res://Assets/Textures/TextureCan/WoodTile/wood_0056_roughness_1k.jpg" id="31_uu8q7"]
 [ext_resource type="Material" uid="uid://cfcnqnj7lb62p" path="res://Assets/Materials/wood_table_mat.tres" id="32_tpmmn"]
 [ext_resource type="Material" uid="uid://cr5ic20q4syar" path="res://Assets/Materials/brick_mat.tres" id="35_ffl76"]
+[ext_resource type="PackedScene" path="res://Assets/DoorsAsset/Scenes/Window1_grp.tscn" id="36_ymsmi"]
+[ext_resource type="PackedScene" path="res://Assets/DoorsAsset/Scenes/Door_1_grp.tscn" id="37_8jo8o"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nvux5"]
 radius = 0.2
@@ -171,12 +173,10 @@ size = Vector2(5, 2)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.487022, -0.335119, 0.806539, 1.39241e-08, 0.923458, 0.383699, -0.87339, -0.18687, 0.449744, -4.89248, 1.13068, 0)
-
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.47292, -0.648459, 0.596529, 0.13342, 0.616514, 0.775957, -0.870945, 0.446555, -0.205044, 0, 1, 0)
+shadow_enabled = true
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 2)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.952562, 2.16492)
 current = true
 
 [node name="SteamerHead" type="RigidBody3D" parent="."]
@@ -193,12 +193,13 @@ disabled = true
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.0495017, -0.0363197)
 shape = SubResource("SphereShape3D_wu8lo")
 
-[node name="Steamer" type="RayCast3D" parent="SteamerHead" node_paths=PackedStringArray("converter", "draw_vp", "particle", "pressureCollisionShape")]
+[node name="Steamer" type="RayCast3D" parent="SteamerHead" node_paths=PackedStringArray("converter", "draw_vp", "fabric", "particle", "pressureCollisionShape")]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 target_position = Vector3(0, -0.5, 0)
 script = ExtResource("2_b2lqm")
 converter = NodePath("../../Point2UVConverter")
 draw_vp = NodePath("../../PaintStack/DrawPreview/DrawViewport")
+fabric = NodePath("../../FabricSpawner/Fabric")
 particle = NodePath("../GPUParticles3D")
 pressureCollisionShape = NodePath("../PressureCollisionShape")
 
@@ -356,16 +357,19 @@ position = Vector2(16, 16)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.166, 0.075)
 text = "Progress: 0%"
 
-[node name="FabricSpawner" type="Node3D" parent="." node_paths=PackedStringArray("p2uv_converter", "steamer", "draw_viewport", "current_fabric")]
+[node name="FabricSpawner" type="Node3D" parent="." node_paths=PackedStringArray("p2uv_converter", "draw_viewport", "fabric", "spawn_wait_timer")]
 script = ExtResource("8_assqg")
 p2uv_converter = NodePath("../Point2UVConverter")
-steamer = NodePath("../SteamerHead/Steamer")
 draw_viewport = NodePath("../PaintStack/DrawPreview/DrawViewport")
-current_fabric = NodePath("Fabric")
+fabric = NodePath("Fabric")
+spawn_wait_timer = NodePath("Timer")
 fabric_color_texs = Array[Texture2D]([ExtResource("9_sdl7e"), ExtResource("10_i7vjy"), ExtResource("11_bqttc"), ExtResource("12_vwsh7"), ExtResource("13_48t4a"), ExtResource("14_mvk5r"), ExtResource("15_sld64"), ExtResource("17_ua7iw"), ExtResource("18_k3jw0")])
 fabric_normal_texs = Array[Texture2D]([ExtResource("19_rits7"), ExtResource("20_oiii0"), ExtResource("21_8dnq8"), ExtResource("21_8dnq8"), ExtResource("22_0ljsi"), ExtResource("23_n2nis"), ExtResource("24_up45e"), ExtResource("26_mokhi"), ExtResource("27_5qnpx")])
 
 [node name="Fabric" parent="FabricSpawner" instance=ExtResource("9_up647")]
+
+[node name="Timer" type="Timer" parent="FabricSpawner"]
+one_shot = true
 
 [node name="Enviroments" type="Node3D" parent="."]
 
@@ -450,3 +454,15 @@ shape = SubResource("BoxShape3D_xpf87")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Enviroments/Wall4"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
 mesh = SubResource("PlaneMesh_cvaio")
+
+[node name="Window1_grp" parent="." instance=ExtResource("36_ymsmi")]
+transform = Transform3D(-1.74846e-08, 0, -0.4, 0, 0.4, 0, 0.4, 0, -1.74846e-08, 2, 1.17811, 0.717253)
+
+[node name="Window1_grp2" parent="." instance=ExtResource("36_ymsmi")]
+transform = Transform3D(5.24537e-08, 0, 0.4, 0, 0.4, 0, -0.4, 0, 5.24537e-08, -2, 1.17811, -0.282747)
+
+[node name="Door_1_grp" parent="." instance=ExtResource("37_8jo8o")]
+transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, 0, 0, 1.90412)
+
+[connection signal="progress_above_threshold" from="PaintStack/DrawPreview/DrawViewport" to="FabricSpawner" method="_on_draw_viewport_progress_above_threshold"]
+[connection signal="timeout" from="FabricSpawner/Timer" to="FabricSpawner" method="_on_timer_timeout"]
