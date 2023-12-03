@@ -116,6 +116,7 @@ default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(0.5, 0.5, 1), 2, Vector3
 op_type = 3
 
 [resource]
+resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_schlick_ggx;
 

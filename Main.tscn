@@ -1,6 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://ci6ywe8vjgfu7"]
+[gd_scene load_steps=20 format=3 uid="uid://ci6ywe8vjgfu7"]
 
-[ext_resource type="Material" uid="uid://b5b1uaejy4nvl" path="res://Assets/Materials/cloth_mat.tres" id="1_jy3pp"]
+[ext_resource type="PackedScene" uid="uid://dsn2bpk44x8i6" path="res://Fabric.tscn" id="1_74lm3"]
 [ext_resource type="Script" path="res://Scripts/FlatTester.gd" id="2_fj6si"]
 [ext_resource type="Script" path="res://Scripts/ClothesSteamer.gd" id="3_bfqjb"]
 [ext_resource type="Script" path="res://Scripts/Point2UVConverter.gd" id="4_5xkq2"]
@@ -8,11 +8,6 @@
 [ext_resource type="Script" path="res://Scripts/DrawViewport.gd" id="5_gv2dq"]
 [ext_resource type="Texture2D" uid="uid://bmlxvwyi7547k" path="res://Assets/Textures/brush_tex.png" id="6_mw3it"]
 [ext_resource type="Script" path="res://Scripts/CalculationViewport.gd" id="8_f1vkp"]
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_4up85"]
-material = ExtResource("1_jy3pp")
-subdivide_width = 15
-subdivide_depth = 15
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nvux5"]
 radius = 0.2
@@ -83,41 +78,7 @@ transform = Transform3D(0.487022, -0.335119, 0.806539, 1.39241e-08, 0.923458, 0.
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.843063, 0.537815, 0, -0.537815, 0.843063, 0, 2.14259, 1.80061)
 
-[node name="SoftBody3D" type="SoftBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 1, 0)
-mesh = SubResource("PlaneMesh_4up85")
-simulation_precision = 50
-linear_stiffness = 0.03
-damping_coefficient = 0.03
-drag_coefficient = 0.03
-pinned_points = [286, 285, 284, 274, 275, 276, 279, 280, 281]
-attachments/0/point_index = 286
-attachments/0/spatial_attachment_path = NodePath("")
-attachments/0/offset = Vector3(0, 0, 0)
-attachments/1/point_index = 285
-attachments/1/spatial_attachment_path = NodePath("")
-attachments/1/offset = Vector3(0, 0, 0)
-attachments/2/point_index = 284
-attachments/2/spatial_attachment_path = NodePath("")
-attachments/2/offset = Vector3(0, 0, 0)
-attachments/3/point_index = 274
-attachments/3/spatial_attachment_path = NodePath("")
-attachments/3/offset = Vector3(0, 0, 0)
-attachments/4/point_index = 275
-attachments/4/spatial_attachment_path = NodePath("")
-attachments/4/offset = Vector3(0, 0, 0)
-attachments/5/point_index = 276
-attachments/5/spatial_attachment_path = NodePath("")
-attachments/5/offset = Vector3(0, 0, 0)
-attachments/6/point_index = 279
-attachments/6/spatial_attachment_path = NodePath("")
-attachments/6/offset = Vector3(0, 0, 0)
-attachments/7/point_index = 280
-attachments/7/spatial_attachment_path = NodePath("")
-attachments/7/offset = Vector3(0, 0, 0)
-attachments/8/point_index = 281
-attachments/8/spatial_attachment_path = NodePath("")
-attachments/8/offset = Vector3(0, 0, 0)
+[node name="Fabric" parent="." instance=ExtResource("1_74lm3")]
 
 [node name="SteamerHead" type="RigidBody3D" parent="." node_paths=PackedStringArray("steamer")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.553056, 0.749371)
@@ -148,7 +109,7 @@ target_position = Vector3(0, -0.5, 0)
 script = ExtResource("3_bfqjb")
 converter = NodePath("../../Point2UVConverter")
 draw_vp = NodePath("../../PaintStack/DrawPreview/DrawViewport")
-fabric_mesh = NodePath("../../SoftBody3D")
+fabric_mesh = NodePath("../../Fabric")
 particle = NodePath("../GPUParticles3D")
 pressureCollisionShape = NodePath("../PressureCollisionShape")
 
@@ -162,7 +123,7 @@ draw_pass_1 = SubResource("QuadMesh_i5xa2")
 
 [node name="Point2UVConverter" type="Node" parent="." node_paths=PackedStringArray("mesh_input")]
 script = ExtResource("4_5xkq2")
-mesh_input = NodePath("../SoftBody3D")
+mesh_input = NodePath("../Fabric")
 
 [node name="PaintStack" type="Control" parent="."]
 visible = false
@@ -260,3 +221,6 @@ position = Vector2(16, 16)
 [node name="ProgressLabel" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.2, 0)
 text = "Progress: 0%"
+
+[node name="Fabric2" parent="." instance=ExtResource("1_74lm3")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, -2.12641, 1.0617, 0.00606477)
