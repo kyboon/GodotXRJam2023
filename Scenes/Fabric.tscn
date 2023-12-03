@@ -1,9 +1,10 @@
-[gd_scene load_steps=38 format=3 uid="uid://dsn2bpk44x8i6"]
+[gd_scene load_steps=39 format=3 uid="uid://dsn2bpk44x8i6"]
 
-[ext_resource type="Texture2D" uid="uid://chce4f2wnpi62" path="res://Assets/Textures/Fabrics/fabrics_0083_normal_opengl_1k.png" id="2_cmugd"]
-[ext_resource type="Texture2D" uid="uid://vsmg7yrn72kd" path="res://Assets/Textures/Fabrics/fabrics_0083_color_1k.jpg" id="3_11va6"]
-[ext_resource type="Texture2D" uid="uid://cxu6dq0x70645" path="res://Assets/Textures/Fabrics/fabric_0032_normal_opengl_1k.png" id="4_scps3"]
-[ext_resource type="Texture2D" uid="uid://b2cdwsyi0pif1" path="res://Assets/Textures/Fabrics/paper_0022_normal_opengl_1k.png" id="5_u27jc"]
+[ext_resource type="Texture2D" uid="uid://chce4f2wnpi62" path="res://Assets/Textures/Fabrics/fabrics_0083_normal_opengl_1k.png" id="1_t7ree"]
+[ext_resource type="Texture2D" uid="uid://vsmg7yrn72kd" path="res://Assets/Textures/Fabrics/fabrics_0083_color_1k.jpg" id="2_rxegf"]
+[ext_resource type="Texture2D" uid="uid://cxu6dq0x70645" path="res://Assets/Textures/Fabrics/fabric_0032_normal_opengl_1k.png" id="3_pbniu"]
+[ext_resource type="Texture2D" uid="uid://b2cdwsyi0pif1" path="res://Assets/Textures/Fabrics/paper_0022_normal_opengl_1k.png" id="4_5h8ni"]
+[ext_resource type="Script" path="res://Scripts/Fabric.gd" id="5_l16sx"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_5o5qj"]
 output_port_for_preview = 0
@@ -121,7 +122,6 @@ default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(0.5, 0.5, 1), 2, Vector3
 op_type = 3
 
 [sub_resource type="VisualShader" id="VisualShader_0xr0e"]
-resource_local_to_scene = true
 code = "shader_type spatial;
 render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_schlick_ggx;
 
@@ -332,7 +332,6 @@ nodes/fragment/39/position = Vector2(-600, 620)
 nodes/fragment/connections = PackedInt32Array(5, 0, 4, 2, 11, 0, 10, 2, 10, 0, 12, 1, 12, 0, 6, 0, 13, 0, 12, 2, 14, 0, 15, 2, 4, 0, 12, 0, 17, 0, 6, 2, 19, 0, 0, 10, 21, 0, 22, 2, 15, 0, 18, 0, 18, 0, 24, 1, 15, 0, 24, 0, 24, 0, 0, 0, 25, 0, 24, 2, 22, 0, 26, 0, 6, 0, 27, 0, 28, 0, 29, 0, 29, 0, 30, 0, 29, 1, 30, 1, 30, 0, 31, 0, 31, 0, 0, 9, 26, 0, 28, 1, 27, 0, 28, 0, 16, 0, 17, 2, 32, 0, 34, 0, 34, 0, 36, 0, 35, 0, 36, 1, 36, 0, 0, 5, 17, 0, 37, 0, 37, 0, 18, 1, 37, 0, 38, 0, 38, 0, 39, 0, 39, 0, 34, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ilplc"]
-resource_local_to_scene = true
 render_priority = 0
 shader = SubResource("VisualShader_0xr0e")
 shader_parameter/wetness_blend_weight = 0.0
@@ -340,13 +339,12 @@ shader_parameter/show_hint = false
 shader_parameter/hint_color = Color(0, 1, 1, 1)
 shader_parameter/wrinkle_blend_weight = 0.5
 shader_parameter/NormalDepth = 1.5
-shader_parameter/main_color = ExtResource("3_11va6")
-shader_parameter/wrinkle_normal_main = ExtResource("4_scps3")
-shader_parameter/wrinkle_normal_secondary = ExtResource("5_u27jc")
-shader_parameter/flat_normal = ExtResource("2_cmugd")
+shader_parameter/main_color = ExtResource("2_rxegf")
+shader_parameter/wrinkle_normal_main = ExtResource("3_pbniu")
+shader_parameter/wrinkle_normal_secondary = ExtResource("4_5h8ni")
+shader_parameter/flat_normal = ExtResource("1_t7ree")
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_4up85"]
-resource_local_to_scene = true
 material = SubResource("ShaderMaterial_ilplc")
 subdivide_width = 15
 subdivide_depth = 15
@@ -386,3 +384,4 @@ attachments/7/offset = Vector3(0, 0, 0)
 attachments/8/point_index = 281
 attachments/8/spatial_attachment_path = NodePath("")
 attachments/8/offset = Vector3(0, 0, 0)
+script = ExtResource("5_l16sx")

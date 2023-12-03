@@ -1,8 +1,10 @@
-extends RigidBody3D
+extends Node3D
 
 @export var steamer: ClothesSteamer
 @export var move_speed: float = 0.2
+@export var fabric_spawner: Node
 var current_m_vector: Vector3 = Vector3.ZERO
+@export var parent_rb: RigidBody3D
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
@@ -14,7 +16,7 @@ func _process(delta):
 	
 func _physics_process(delta):
 	if current_m_vector != Vector3.ZERO:
-		move_and_collide(current_m_vector * delta)
+		parent_rb.move_and_collide(current_m_vector * delta)
 	pass
 	
 func _input(event):
@@ -54,5 +56,6 @@ func _input(event):
 	if event is InputEventKey and event.keycode == KEY_SHIFT:
 		steamer.set_hinting(event.is_pressed())
 		
-	if event is InputEventKey and event.keycode == KEY_1:
-		steamer.set_grab(event.is_pressed())
+	if event is InputEventKey and event.keycode == KEY_2:
+		if event.is_pressed():
+			fabric_spawner.spawn_new_fabric()

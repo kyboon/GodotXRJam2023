@@ -5,8 +5,6 @@ extends Node
 
 class_name Point2UVConverter
 
-@export var mesh_input: MeshInstance3D
-
 var meshtool
 var mesh
 var mesh_instance
@@ -17,10 +15,6 @@ var _face_count := 0
 var _world_normals := PackedVector3Array()
 var _world_vertices := []
 var _local_face_vertices := []
-
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	set_mesh(mesh_input)
 
 func set_mesh(_mesh_instance):
 	mesh_instance = _mesh_instance

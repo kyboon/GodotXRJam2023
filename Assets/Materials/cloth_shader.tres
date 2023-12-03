@@ -81,6 +81,7 @@ op_type = 2
 [sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_lay54"]
 parameter_name = "show_hint"
 default_value_enabled = true
+default_value = true
 
 [sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_aujdw"]
 default_input_values = [0, false, 1, Vector3(1, 1, 1), 2, Vector3(0, 0, 0)]
@@ -123,7 +124,7 @@ render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specul
 uniform sampler2D main_color : source_color;
 uniform sampler2D paint_texture : hint_default_black;
 uniform float wetness_blend_weight = 0.5;
-uniform bool show_hint = false;
+uniform bool show_hint = true;
 uniform vec4 hint_color : source_color;
 uniform sampler2D wrinkle_normal_main : hint_normal;
 uniform sampler2D wrinkle_normal_secondary : hint_normal;
@@ -263,7 +264,6 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-1527.4, 455.913)
 modes/cull = 2
 nodes/fragment/4/node = SubResource("VisualShaderNodeTexture_wav6u")
 nodes/fragment/4/position = Vector2(-1600, 1400)

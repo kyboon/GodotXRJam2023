@@ -7,6 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://b2cdwsyi0pif1" path="res://Assets/Textures/Fabrics/paper_0022_normal_opengl_1k.png" id="4_fkl7v"]
 
 [resource]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_i2fos")
 shader_parameter/wetness_blend_weight = 0.0
