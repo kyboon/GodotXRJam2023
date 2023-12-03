@@ -10,3 +10,6 @@ export_presets.cfg
 
 /[Bb]uilds/
 /[Bb]uild/
+
+/android/
+/addons/godotopenxrvendors/
